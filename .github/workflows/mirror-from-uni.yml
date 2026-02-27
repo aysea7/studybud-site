@@ -43,27 +43,29 @@ jobs:
             --exclude ".github/workflows/" \
             upstream/ personal/
 
-      - name: Commit and push if changed
-        run: |
-          set -euo pipefail
-          cd personal
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Show status for debugging
-          git status --porcelain
-
-          # If nothing changed, exit cleanly
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes to mirror."
-            exit 0
-          fi
-          
-          git add -A
-          git commit -m "Mirror upstream changes (excluding workflows)"
-          git push origin HEAD:main
-
-          git add -A
-          git commit -m "Mirror upstream changes (excluding workflows)"
-          git push origin HEAD:main
+            - name: Commit and push if changed
+          run: |
+            set -euo pipefail
+            cd personal
+  
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+  
+            # If no changes, exit cleanly
+            if [ -z "$(git status --porcelain)" ]; then
+              echo "No changes to mirror."
+              exit 0
+            fi
+  
+            git add -A
+  
+            # Commit. If somehow nothing is staged, don't fail the job.
+            git commit -m "Mirror upstream changes (excluding workflows)" || {
+              echo "No commit created (nothing staged)."
+              exit 0
+            }
+  
+            git push origin HEAD:main
+            git add -A
+            git commit -m "Mirror upstream changes (excluding workflows)"
+            git push origin HEAD:main

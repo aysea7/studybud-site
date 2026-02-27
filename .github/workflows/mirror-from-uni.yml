@@ -3,32 +3,67 @@ name: Mirror from university repo
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"  # every 10 minutes
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  group: mirror-from-uni
+  cancel-in-progress: true
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout personal repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          path: personal
 
-      - name: Configure git identity
+      # Checkout the university repo into a separate folder
+      - name: Checkout university repo
+        uses: actions/checkout@v4
+        with:
+          repository: UOH-CS-Level5/group-project-repo-2025-2026-v2-csai_02.git
+          ref: main
+          token: ${{ secrets.UNI_REPO_TOKEN }}
+          fetch-depth: 0
+          path: upstream
+
+      - name: Sync files (exclude workflows)
         run: |
+          set -euo pipefail
+
+          # Copy upstream -> personal, excluding git metadata and workflows
+          rsync -a --delete \
+            --exclude ".git/" \
+            --exclude ".github/workflows/" \
+            upstream/ personal/
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          cd personal
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Add upstream (uni) repo and fetch
-        run: |
-          git remote add upstream https://github.com/UOH-CS-Level5/group-project-repo-2025-2026-v2-csai_02
-          git fetch upstream --prune
+          # Show status for debugging
+          git status --porcelain
 
-      - name: Mirror upstream main into this repo main
-        run: |
-          git checkout main
-          git reset --hard upstream/main
-          git push origin main --force
+          # If nothing changed, exit cleanly
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to mirror."
+            exit 0
+          fi
+          
+          git add -A
+          git commit -m "Mirror upstream changes (excluding workflows)"
+          git push origin HEAD:main
+
+          git add -A
+          git commit -m "Mirror upstream changes (excluding workflows)"
+          git push origin HEAD:main

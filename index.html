@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/images/favicon.ico" rel="icon">
+    <title> Main • StudyBud</title>
+    <link rel="stylesheet" href="./static/assets/styles-adv.css">
+    <link rel="stylesheet" href="./static/assets/queries.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Montserrat:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/c06db842d7.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="/static/flags/sprite-hq.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/02/19/15/20260219152203-Y4B6CFMN.js" defer></script>
+    <style>
+        .cropper-crop-box, .cropper-view-box {
+            border-radius: 50%;
+        }
+        
+        .cropper-view-box {
+            box-shadow: 0 0 0 1px #39f;
+            outline: 0;
+        }
+        
+        .cropper-container.cropper-bg {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+    <div class="home-for-refugee">
+        <a href="/en/" id="logo">StudyBud</a>
+    </div>
+    <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-right">
+        <div class="navbar-links">
+            <ul>
+                <li><a id="navbar-feed-button" href="/en/">Feed</a></li>
+                <li><a id="navbar-search-button" href="/en/search/">Search</a></li>
+                <li><a id="navbar-chats-button" href="/en/chats/">Chats</a></li>
+                <li><a id="navbar-requests-button" href="/en/requests/">Requests</a></li>
+                <li><a id="navbar-saved-button" href="/en/saved/">Saved</a></li>
+                <li><a id="navbar-settings-button" href="/en/settings/">Settings</a></li>
+                <li><a id="navbar-me-button" href="/en/me/">Me</a></li>
+                <li>
+                    <a id="navbar-logout-button" href="/en/logout/" style="color: #FFC9B9;">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="big-wrapper">
+        <div class="wrapper">
+            
+            <div class="content" id="content">
+                <noscript>
+                    <div style="background-color:brown !important; color: aliceblue; padding: 0r; width: 100%; text-align: center;">
+                        <h3>Please, enable JavaScript in your browser. Some of the essential functionality may be missing without it, and the website may behave oddly.</h3>
+                    </div>
+                </noscript>
+
+                
+            <div class="post" id="settings-navbar">
+                <div>
+                    <a id="a-settings-profile-settings" class="settings-nav-link">Edit profile</a>
+                    <a id="a-settings-change-password-settings" class="settings-nav-link">Change password</a>
+                    <a id="a-settings-privacy-settings" class="settings-nav-link">Privacy</a>
+                    <a id="a-settings-emails-settings" class="settings-nav-link">Emails</a>
+                    <a id="a-settings-reviews-settings" class="settings-nav-link">Reviews</a>
+                </div>
+            </div>
+
+            <div class="post" id="settings-change-password-settings">
+                <div id="studybud-chat-window"></div>
+            </div>
+
+            <div class="post" id="settings-privacy-settings">
+                
+                <div class="settings-header-wrapper">
+                    <p class="settings-header">
+                        Settings
+                    </p>
+                </div>
+
+                <div class="form-wrapper">
+                    <div class="s-checkbox-toggle-div">
+                        <p class="checkbox-toggle-p">Post save sends a notification</p>
+                        <input type="checkbox" class="checkbox-toggle" id="p-sav-vis"  checked="true" />
+                        <label for="p-sav-vis" class="checkbox-toggle-label"></label>
+                    </div>
+                    <div class="s-checkbox-toggle-div">
+                        <p class="checkbox-toggle-p">Post removal sends a notification</p>
+                        <input type="checkbox" class="checkbox-toggle" id="p-del-vis" />
+                        <label for="p-del-vis" class="checkbox-toggle-label"></label>
+                    </div>
+                    <div class="s-checkbox-toggle-div" style="border: none;">
+                        <p class="checkbox-toggle-p">Tick &quot;By request&quot; on all new posts</p>
+                        <input type="checkbox" class="checkbox-toggle" id="p-aut-hid-con"  checked="true" />
+                        <label for="p-aut-hid-con" class="checkbox-toggle-label"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="to-top-button">
+                <i class="fa-solid fa-angles-up"></i>
+            </div>
+
+        </div>
+    </div>
+
+<footer>
+    <div class="page-links">
+        <a id="footer-about" href="/en/about/">About</a>
+        <a id="footer-donate" href="/en/donate/">Donate</a>
+        <a id="footer-help" href="/en/help/">Help</a>
+        <a id="footer-terms" href="/en/terms/">Terms</a>
+        <a id="footer-privacy" href="/en/privacy/">Privacy</a>
+        <a id="footer-cookies" href="/en/cookies/">Cookies</a>
+    </div>
+    <div class="copyright-footer">
+        <small>&copy; All rights reserved 2026-<span class="year"></span>, CS_AI-2</small>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/static/javascript/common/base.js" defer></script>
+<script type="text/javascript" src="/static/javascript/settings.js" defer></script>
+<script type="text/javascript" src="/static/javascript/recaptchaCompact.js"></script>
+<script type="text/javascript">function callback() {captchaCheck(1)}</script>
+
+
+</body>
+
+</html>

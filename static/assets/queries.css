@@ -1,0 +1,208 @@
+@media (max-width: 670px) {
+
+    .page-links a {
+        font-size: 0.9rem;
+    }
+
+    .copyright-footer {
+        font-size: 0.85rem;
+    }
+}
+
+@media only screen and (width < 360px) {
+
+    .home-for-refugee {
+        font-size: 1.55rem;
+        margin-left: 0.7rem;
+    }
+
+    .input-container input {
+        font-size: 0.75rem;
+    }
+
+    .page-links {
+        column-gap: 0.7rem;
+        row-gap: 0.25rem;
+    }
+
+    .page-links a {
+        font-size: 0.8rem;
+    }
+
+    .copyright-footer {
+        font-size: 0.75rem;
+    }
+
+}
+
+@media (min-width: 700px) and (max-width: 1260px) {
+    .content {
+        width: 52.5%;
+    }
+
+    #side-panel {
+        width: 30%;
+    }
+
+    .post {
+        padding: 0.75em;
+    }
+}
+
+@media (max-width: 700px) {
+
+    #side-panel {
+        display: none;
+    }
+
+    .wrapper {
+        justify-content: center;
+    }
+
+    .content {
+        width: 90%;
+    }
+
+    .post {
+        padding: 0.75em;
+    }
+
+    .settings-header {
+        font-size: 1em;
+    }
+
+    .settings-header-wrapper {
+        justify-content: center;
+    }
+
+    #change-picture-button,
+    #delete-picture-button,
+    #change-email-button,
+    #change-username-button,
+    #submit-password-button,
+    #deactivate-account-button,
+    #deactivate-account-button-ss {
+        width: 100%;
+    }
+
+    #change-email-button,
+    #change-username-button,
+    #submit-password-button,
+    #deactivate-account-button,
+    #deactivate-account-button-ss {
+        max-width: 100%;
+    }
+
+    .settings-profile-picture-div,
+    .export-data-div.column {
+        align-items: center;
+    }
+
+    #user-page-header {
+        flex-direction: column;
+    }
+
+    #user-page-header-descr {
+        margin-top: 0.75rem;   
+    }
+
+    .tooltip.columnable {
+        margin: 0;
+    }
+    
+    .export-data-div.columnable {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice-header {
+        text-align: center;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    .inbox-outbox-buttons {
+        font-size: 0.79em;
+    }
+}
+
+@media (max-width: 530px) {
+    .inbox-outbox-buttons {
+        font-size: 0.735em;
+    }
+
+}
+
+@media (min-width: 1110px) and (max-width: 1182px) {
+    .navbar-links li a {
+        padding: 1rem 0.7rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #settings-profile-settings > div.form-wrapper > div > div {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1110px) {
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-for-refugee {
+        padding-top: 10px;
+    }
+
+    .navbar-right {
+        display: none;
+        width: 100%;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .languages {
+        margin: 0.5rem 1rem;
+    }
+
+    .navbar-links li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-links li a {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-right.active {
+        display: flex;
+    }
+
+
+    @keyframes dropdown {
+        from {
+            opacity: 0%;
+            margin-bottom: -20%;
+        }
+
+        50% {
+            opacity: 10%;
+        }
+
+        to {
+            opacity: 100%;
+            margin-bottom: 0;
+        }
+    }
+
+}

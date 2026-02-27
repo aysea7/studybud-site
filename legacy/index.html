@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBud — Your Academic Companion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  
+  <!-- ── Header ── -->
+  <header id="site-header">
+    <div class="header-badge fade-up">AI-Powered Study Assistant</div>
+    <h1 class="fade-up-2">Study<span>Bud</span></h1>
+    <p class="fade-up-3">Your academic companion for understanding, improving, and revising — intelligently.</p>
+  </header>
+
+  <main>
+
+    <!-- ── Chatbot ── -->
+    <section class="chatbot-container fade-up" id="chatbot-section">
+
+      <!-- Header Bar -->
+      <div class="chat-header">
+        <div class="chat-header-avatar">🎓</div>
+        <div class="chat-header-info">
+          <h3>StudyBud Assistant</h3>
+          <p>Modules · Assignments · Revision</p>
+        </div>
+        <div class="online-dot" title="Online"></div>
+      </div>
+
+      <!-- Chat Window -->
+      <div class="chat-window" id="chat-window">
+        <div class="chat-empty" id="chat-empty">
+          <div class="icon">💬</div>
+          <p>Ask about your modules, assignments,<br>or get a personalised revision plan.</p>
+        </div>
+      </div>
+
+      <!-- Quick Buttons -->
+      <div class="quick-buttons">
+        <button class="quick-btn" data-topic="modules">📚 Modules</button>
+        <button class="quick-btn" data-topic="assignments">📝 Assignments</button>
+        <button class="quick-btn" data-topic="revision">🕒 Revision Plan</button>
+        <button class="quick-btn clear" id="clear-chat">✕ Clear</button>
+      </div>
+
+      <!-- Input Form -->
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Ask about modules, assignments, or exams…" autocomplete="off">
+        <button type="submit" class="send-btn" title="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </form>
+
+    </section>
+
+    <!-- ── Features ── -->
+    <section class="features fade-up-3" id="features-section">
+      <div class="section-label">
+        <span class="eyebrow">Capabilities</span>
+        <h2>Everything You Need to Succeed</h2>
+        <p>Designed to support every stage of your academic journey.</p>
+      </div>
+
+      <div class="feature-grid">
+
+        <div class="feature">
+          <div class="feature-icon blue">📚</div>
+          <h3>Academic Support</h3>
+          <p>Explain modules, assignments, and key concepts clearly with examples and structured breakdowns.</p>
+          <ul>
+            <li>Clarify assignment briefs</li>
+            <li>Break tasks into actionable steps</li>
+            <li>Highlight key deliverables</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon amber">📝</div>
+          <h3>Assessment Guidance</h3>
+          <p>Interpret marking criteria and review your drafts to maximise your grade before submission.</p>
+          <ul>
+            <li>Simplify rubrics for high-grade expectations</li>
+            <li>Evaluate work against criteria</li>
+            <li>Suggest targeted improvements</li>
+          </ul>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon green">🕒</div>
+          <h3>Revision &amp; Study</h3>
+          <p>Generate personalised revision plans and use proven techniques to optimise study efficiency.</p>
+          <ul>
+            <li>Schedules based on weak areas &amp; deadlines</li>
+            <li>Techniques &amp; quizzes for retention</li>
+            <li>Track progress and high-priority topics</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <span>StudyBud</span>. Designed for students, by students.</p>
+  </footer>
+
+  <script>
+    const form           = document.getElementById('chat-form');
+    const input          = document.getElementById('user-input');
+    const chatWindow     = document.getElementById('chat-window');
+    const siteHeader     = document.getElementById('site-header');
+    const featuresSection = document.getElementById('features-section');
+    const chatbotSection = document.getElementById('chatbot-section');
+
+    let chatActivated = false;
+
+    /* ── Activate chat mode ── */
+    function activateChat() {
+      if (chatActivated) return;
+      chatActivated = true;
+
+      // Collapse the header to a slim nav bar
+      siteHeader.classList.add('compact');
+
+      // Hide the features section instantly (no flicker)
+      featuresSection.classList.add('hidden');
+
+      // Scroll smoothly to the very top so the chat is fully visible
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ── Remove empty state placeholder ── */
+    function clearEmpty() {
+      const empty = document.getElementById('chat-empty');
+      if (empty) empty.remove();
+    }
+
+    /* ── Add a message bubble ── */
+    function addMessage(text, sender = 'bot') {
+      clearEmpty();
+      const wrapper = document.createElement('div');
+
+      if (sender === 'user') {
+        wrapper.classList.add('message', 'user');
+        wrapper.textContent = text;
+      } else {
+        wrapper.classList.add('bot-wrapper');
+        const card = document.createElement('div');
+        card.classList.add('bot-card');
+        card.innerHTML = text;
+        wrapper.appendChild(card);
+      }
+
+      chatWindow.appendChild(wrapper);
+      chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+    }
+
+    /* ── Bot response logic ── */
+    function botResponse(msg) {
+      const m = msg.toLowerCase();
+
+      if (m.includes('module')) {
+        addMessage(`
+          <h4>📚 Modules Guidance</h4>
+          <p>Focus on core concepts and break each lecture into key points. Suggested approach:</p>
+          <ul>
+            <li>Module 1 — Identify the key theory; summarise in your own words</li>
+            <li>Module 2 — Work through practical exercises and note patterns</li>
+            <li>Module 3 — Cross-reference lecture notes with recommended reading</li>
+          </ul>
+        `);
+      } else if (m.includes('assignment')) {
+        addMessage(`
+          <h4>✅ Assignment Checklist</h4>
+          <ul>
+            <li>Read the brief carefully — highlight every deliverable</li>
+            <li>Map each requirement to the marking rubric</li>
+            <li>Break the task into timed, manageable steps</li>
+            <li>Draft → review against criteria → revise → submit</li>
+          </ul>
+        `);
+      } else if (m.includes('revision')) {
+        addMessage(`
+          <h4>🗓 Weekly Revision Plan</h4>
+          <p>A balanced schedule targeting all areas over five days:</p>
+          <table>
+            <tr><th>Day</th><th>Focus</th><th>Method</th></tr>
+            <tr><td>Monday</td><td>Module 1 — Key Concepts</td><td>Flashcards &amp; notes</td></tr>
+            <tr><td>Tuesday</td><td>Module 2 — Practice Questions</td><td>Past papers</td></tr>
+            <tr><td>Wednesday</td><td>Assignment Review</td><td>Rubric check</td></tr>
+            <tr><td>Thursday</td><td>Weak Areas Focus</td><td>Targeted re-reading</td></tr>
+            <tr><td>Friday</td><td>Mock Test &amp; Summary</td><td>Timed conditions</td></tr>
+          </table>
+        `);
+      } else {
+        addMessage(`<p>💡 Try asking me about <strong>modules</strong>, <strong>assignments</strong>, or a <strong>revision plan</strong> — I'll give you a structured visual response.</p>`);
+      }
+    }
+
+    /* ── Form submit ── */
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      activateChat();
+      addMessage(msg, 'user');
+      setTimeout(() => botResponse(msg), 320);
+      input.value = '';
+    });
+
+    /* ── Quick buttons ── */
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.id === 'clear-chat') {
+          // Reset to landing state
+          chatWindow.innerHTML = `
+            <div class="chat-empty" id="chat-empty">
+              <div class="icon">💬</div>
+              <p>Ask about your modules, assignments,<br>or get a personalised revision plan.</p>
+            </div>`;
+          siteHeader.classList.remove('compact');
+          featuresSection.classList.remove('hidden');
+          chatActivated = false;
+        } else {
+          activateChat();
+          addMessage(btn.dataset.topic, 'user');
+          setTimeout(() => botResponse(btn.dataset.topic), 320);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

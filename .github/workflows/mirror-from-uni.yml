@@ -32,14 +32,20 @@ jobs:
           fetch-depth: 0
           path: upstream
 
-      - name: Sync files (exclude workflows)
+      - name: Sync files (exclude workflows + keep CNAME)
         run: |
           set -euo pipefail
 
           rsync -a --delete \
             --exclude ".git/" \
             --exclude ".github/workflows/" \
+            --exclude "CNAME" \
             upstream/ personal/
+
+      - name: Restore GitHub Pages CNAME
+        run: |
+          set -euo pipefail
+          echo "studybud.tech" > personal/CNAME
 
       - name: Commit and push if changed
         run: |

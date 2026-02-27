@@ -73,6 +73,7 @@
 
     /* misc */
     --tap-highlight: transparent;
+    --post-pad-x: 1em; /* matches .post padding left/right */
 }
 
 /* links */
@@ -302,6 +303,10 @@ footer {
     font-weight: lighter;
 }
 
+.copyright-footer#university-footer {
+    margin-top: 0;
+}
+
 /* inputs */
 .settings-form .settings-input,
 .login-form .login-input {
@@ -367,7 +372,7 @@ footer {
 .post {
     background-color: var(--c-surface);
     border-radius: var(--radius-15);
-    padding: 2em 1em 2em 1em;
+    padding: 2em var(--post-pad-x);
     margin: 0 0 3em 0;
     width: 100%;
     text-align: left;
@@ -1641,8 +1646,12 @@ img {
     background-color: var(--c-bg);
 }
 
-.nopadding {
-    padding: 0;
+.post.nopadding {
+  padding: 0;
+  width: calc(100% + (2 * var(--post-pad-x)));
+  margin-left: calc(-1 * var(--post-pad-x));
+  margin-right: calc(-1 * var(--post-pad-x));
+  box-sizing: border-box;
 }
 
 #create-post-button {

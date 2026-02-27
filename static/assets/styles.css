@@ -6,35 +6,39 @@
     --font-sans: 'Montserrat', sans-serif;
     --font-serif: 'Arvo', serif;
 
-    /* core palette */
-    --c-primary: #C4392F;
-    --c-primary-80: #C4392Fc0;
+    /* brand colors */
+    --c-primary: #C4392F;        /* main red (navbar, buttons, accents) */
+    --c-primary-80: #C4392FCC;   /* red with transparency */
     --c-primary-56: #C4392F90;
     --c-primary-54: #C4392F89;
 
-    --c-surface: #FEFEE3;
-    --c-bg: #ADB9E3;
+    /* background system */
+    --c-bg: #FBECE8;             /* page background (warm peach) */
+    --c-surface: #FFFEFD;        /* cards/posts surfaces */
+    --c-pink: #FFC9B9;           /* toolbar / secondary panels */
+    --c-highlight: #ffffab;      /* notification highlight */
 
-    --c-text: #484349;
+    /* text + borders */
+    --c-text: #2B1F1F;           /* main text color */
+    --c-border: var(--c-text);     /* default border color */
+    --c-border-black: var(--c-black);
+
+    /* utility colors */
+    --c-danger: #B00020;         /* destructive actions */
+    --c-danger-strong: #8E0018;
+    --c-danger-btn: #C23B3B;
+    --c-danger-btn-hover: #D64545;
+
+    --c-accent-orange: #F36B45;      /* accent / hover states */
+    --c-accent-orange-77: #F36B45C4;
+
     --c-white: #ffffff;
     --c-black: #000000;
 
-    --c-danger: #c00;
-    --c-danger-strong: #bc2c00;
-    --c-danger-btn: #cc3a3a;
-    --c-danger-btn-hover: #e83d3d;
-
-    --c-accent-orange: #F78154;
-    --c-accent-orange-77: #F78254c4;
-
-    --c-pink: #FFC9B9;
-    --c-highlight: #ffffab;
-
-    --c-border: var(--c-text);
-    --c-border-black: var(--c-black);
+    /* shadows */
     --c-shadow-rgb: 0, 0, 0;
 
-    /* borders / radii */
+    /* border radius scale */
     --radius-4: 4px;
     --radius-5: 5px;
     --radius-6: 6px;
@@ -47,23 +51,23 @@
     --radius-round: 9999px;
     --radius-circle: 50%;
 
-    /* scrollbar */
+    /* scrollbars */
     --scrollbar-w: 15px;
     --scrollbar-w-narrow: 10px;
 
-    /* shadows */
+    /* shadow presets */
     --shadow-inset-soft: inset 0 0 3px rgba(var(--c-shadow-rgb), 0.3);
     --shadow-navbar: 2.9px 5.8px 5.8px hsl(0deg 0% 0% / 0.41);
-    --shadow-card: 7.5px 15.0px 15.0px hsl(0deg 0% 0% / 0.27);
-    --shadow-inset-bottom: inset 0px -5px 5px hsl(0deg 0% 0% / 0.2);
+    --shadow-card: 7.5px 15px 15px hsl(0deg 0% 0% / 0.27);
+    --shadow-inset-bottom: inset 0 -5px 5px hsl(0deg 0% 0% / 0.2);
 
-    /* transitions */
+    /* animation timings */
     --t-fast: 50ms;
     --t-med: 250ms;
     --t-slow: 600ms;
     --t-navbar-hover: 700ms;
 
-    /* outlines */
+    /* outline styles */
     --outline-2: 2px solid var(--c-border);
     --outline-3-dashed: 3px dashed #ccc;
 
@@ -1631,6 +1635,14 @@ img {
 
 .nobmargin {
     margin-bottom: 0;
+}
+
+.post#chatbot-window {
+    background-color: var(--c-bg);
+}
+
+.nopadding {
+    padding: 0;
 }
 
 #create-post-button {

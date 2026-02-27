@@ -1,38 +1,63 @@
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/images/favicon.ico" rel="icon">
-    <title> Main • StudyBud</title>
+
+    <title>Main • StudyBud</title>
+
+    <!-- Favicons -->
+    <link rel="icon" href="./static/media/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="./static/media/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./static/media/images/favicon-16x16.png">
+
+    <!-- Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./static/media/images/apple-touch-icon.png">
+
+    <!-- Android / PWA -->
+    <link rel="manifest" href="./static/media/images/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="./static/media/images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./static/media/images/android-chrome-512x512.png">
+
+    <!-- Theme color (affects mobile browser UI) -->
+    <meta name="theme-color" content="#C4392F">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./static/assets/styles.css">
     <link rel="stylesheet" href="./static/assets/queries.css">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Montserrat:wght@300;400;600&display=swap">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c06db842d7.js" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="/static/flags/sprite-hq.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+
+    <!-- Botpress -->
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/02/19/15/20260219152203-Y4B6CFMN.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2026/02/19/15/20260219152203-Y4B6CFMN.js" defer></script>
+
     <style>
         .cropper-crop-box, .cropper-view-box {
             border-radius: 50%;
         }
-        
+
         .cropper-view-box {
             box-shadow: 0 0 0 1px #39f;
             outline: 0;
         }
-        
+
         .cropper-container.cropper-bg {
             width: 100%;
         }
@@ -91,7 +116,7 @@
                 </div>
             </div>
 
-            <div class="post" id="settings-change-password-settings">
+            <div class="post nopadding" id="chatbot-window">
                 <div id="studybud-chat-window"></div>
             </div>
 

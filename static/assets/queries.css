@@ -47,6 +47,10 @@
     .post {
         padding: 0.75em;
     }
+
+    .nopadding {
+        padding: 0;
+    }
 }
 
 @media (max-width: 700px) {
@@ -65,6 +69,10 @@
 
     .post {
         padding: 0.75em;
+    }
+
+    .nopadding {
+        padding: 0;
     }
 
     .settings-header {
